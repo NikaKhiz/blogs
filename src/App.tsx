@@ -1,12 +1,18 @@
 import { Header } from '@/header';
 import { GlobalStyles } from '@/styles';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { LandingPage } from './pages/landing';
 
 function App() {
   return (
     <>
       <GlobalStyles />
       <Header />
-      <p>RDBR blogs</p>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<LandingPage />} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }
