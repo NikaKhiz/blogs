@@ -1,8 +1,11 @@
+import { GlobalStyles } from '@/styles';
+
 function App() {
   return (
-    <div>
-      <h1>RDBR blogs</h1>
-    </div>
+    <>
+      <GlobalStyles />
+      <p>RDBR blogs</p>
+    </>
   );
 }
 
