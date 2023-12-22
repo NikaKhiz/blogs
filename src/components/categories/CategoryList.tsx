@@ -1,6 +1,6 @@
 import CategoryListItem from '@/categories/CategoryListItem';
 import { CategoryTypes } from 'src/types/caterogies';
-import { StyledCategoryList } from '@/styles/categories/categories.styles';
+import { StyledCategoryList } from '@/styles/categories';
 
 const CategoryList = (props: { categories: CategoryTypes[] }) => {
   return (

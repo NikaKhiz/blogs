@@ -8,7 +8,7 @@ import {
   StyledPostsContainer,
 } from './components/landingPage.styles';
 import HeroImage from '/src/assets/images/hero.png';
-import CategoryList from '@/categories/CategoryList';
+import { CategoryList } from '@/categories';
 
 import { PostsListItem } from '@/posts';
 

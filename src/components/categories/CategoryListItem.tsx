@@ -1,5 +1,5 @@
 import { CategoryTypes } from 'src/types/caterogies';
-import { StyledCategoryListItem } from '@/styles/categories/categories.styles';
+import { StyledCategoryListItem } from '@/styles/categories';
 
 const CategoryListItem = (props: CategoryTypes) => {
   const { title, text_color, background_color } = props;
