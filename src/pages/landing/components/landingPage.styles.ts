@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const Container = styled.main`
   width: 100%;
   min-height: calc(100vh - (76px));
   background-color: var(--clr-primary-lightishGray);
@@ -27,4 +27,11 @@ export const StyledHeroImage = styled.img`
   display: block;
   width: 100%;
   object-fit: cover;
+`;
+
+export const StyledPostsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  align-items: center;
 `;

@@ -1,15 +1,20 @@
+import { CategoryTypes } from 'src/types/caterogies';
 import {
   Container,
   StyledHero,
   StyledHeading,
   StyledHeroImage,
   StyledHeroImageWrapper,
+  StyledPostsContainer,
 } from './components/landingPage.styles';
 import HeroImage from '/src/assets/images/hero.png';
-import Categories from './components/Categories';
+import CategoryList from '@/categories/CategoryList';
+
 import { PostsListItem } from '@/posts';
 
 const LandingPage = () => {
+  const categories: CategoryTypes[] = [];
+
   return (
     <Container>
       <StyledHero>
@@ -18,8 +23,10 @@ const LandingPage = () => {
           <StyledHeroImage src={HeroImage} alt='hero icon' />
         </StyledHeroImageWrapper>
       </StyledHero>
-      <Categories />
-      <PostsListItem />
+      <StyledPostsContainer>
+        {categories.length > 0 && <CategoryList categories={categories} />}
+        <PostsListItem />
+      </StyledPostsContainer>
     </Container>
   );
 };
