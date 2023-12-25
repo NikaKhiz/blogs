@@ -1,1 +1,1 @@
-export { default as PostsListItem } from './PostsListItem';
+export { default as BlogList } from './PostList';
