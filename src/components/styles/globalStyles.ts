@@ -16,6 +16,7 @@ const GlobalStyles = createGlobalStyle`${css`
     --clr-secondary-neutralGray: #d9d8e0;
     --clr-primary-lightGray: #fcfcfd;
     --clr-secondary-lightGray: #f9f9fa;
+    --clr-primary-lightishGray: #f3f2fa;
 
     /* font weight */
     --font-regular: 400;

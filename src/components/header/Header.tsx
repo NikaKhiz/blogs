@@ -8,15 +8,18 @@ const Header = () => {
   const openLoginModal = () => {
     console.log('modal is being opened');
   };
-
+  const redirectToAddBlog = () => {
+    console.log('redirect to add blog page');
+  };
   return (
     <StyledHeader isStandart>
       <Logo />
       <div>
-        <ButtonPrimary
-          title={isAuthorized ? 'დაამატე ბლოგი' : 'შესვლა'}
-          onClick={openLoginModal}
-        />
+        {isAuthorized ? (
+          <ButtonPrimary title='დაამატე ბლოგი' onClick={redirectToAddBlog} />
+        ) : (
+          <ButtonPrimary title='შესვლა' onClick={openLoginModal} />
+        )}
       </div>
     </StyledHeader>
   );
