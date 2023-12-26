@@ -11,6 +11,25 @@ export const StyledButtonPrimary = styled.button`
   width: 100%;
 `;
 
+export const StyledButtonSecondary = styled.button<{
+  background: string;
+  bghover?: string;
+}>`
+  width: 40px;
+  height: 40px;
+  background-color: ${(props) => props.background};
+  color: var(--clr-black);
+  border: none;
+  cursor: pointer;
+  border-radius: var(--rounded-medium);
+  position: absolute;
+  top: 0;
+  left: 0;
+  &:hover {
+    background-color: ${(props) => props.bghover};
+  }
+`;
+
 export const StyledButtonRedirect = styled(Link)`
   display: flex;
   align-items: center;

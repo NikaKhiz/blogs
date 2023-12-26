@@ -16,6 +16,8 @@ import CategoryListItem from '@/categories/CategoryListItem';
 import { StyledBlogSection } from './components/blogPage.styles';
 import { BlogTypes } from 'src/types/blogs';
 import BlogsCarousel from './components/BlogsCarousel';
+import ButtonSecondary from '@/ui/buttons/ButtonSecondary';
+import { FaChevronLeft } from 'react-icons/fa';
 
 type BlogTypeWithNewMember = BlogTypes & { email: string };
 
@@ -39,12 +41,17 @@ const BlogPage = () => {
       publish_date: 'published at ',
       title: 'title of the blog',
     });
-  }, [blog]);
-
+  }, []);
+  const goBack = () => {
+    console.log('go back');
+  };
   if (!blog)
     return (
       <Container>
         <StyledBlogSection>
+          <ButtonSecondary onClick={goBack}>
+            <FaChevronLeft />
+          </ButtonSecondary>
           <p>Oops. No blog with current id. go back to the main page!</p>
         </StyledBlogSection>
       </Container>
@@ -53,6 +60,9 @@ const BlogPage = () => {
   return (
     <Container>
       <StyledBlogSection>
+        <ButtonSecondary onClick={goBack}>
+          <FaChevronLeft />
+        </ButtonSecondary>{' '}
         <StyledBlogContent>
           <StyledBlogImageWrapper>
             <StyledBlogImage src={blog.image} alt={`blog ${blog.title}`} />
