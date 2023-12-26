@@ -1,3 +1,4 @@
+import Slider from 'react-slick';
 import styled from 'styled-components';
 
 export const StyledCarouselWrapper = styled.section`
@@ -34,5 +35,14 @@ export const StyledCarouselAction = styled.button<{ available: boolean }>`
   &:hover {
     background-color: ${(props) =>
       props.available ? 'var(--clr-secondary-violet)' : ''};
+  }
+`;
+
+export const StyledCarousel = styled(Slider)`
+  & .slick-slide > div {
+    margin: 0 20px;
+  }
+  & .slick-track {
+    margin-left: 0;
   }
 `;
