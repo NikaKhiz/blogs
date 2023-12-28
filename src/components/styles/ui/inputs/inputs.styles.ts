@@ -17,7 +17,11 @@ export const StyledInputText = styled.input<InputTextTypes>`
     props.error ? '--clr-dullRed' : 'transparent'};
   border: 1px solid
     ${(props) =>
-      props.error ? 'var(--clr-red)' : 'var(--clr-primary-neutralGray)'};
+      props.error
+        ? 'var(--clr-red)'
+        : props.dirty && !props.error
+          ? 'var(--clr-green)'
+          : 'var(--clr-primary-neutralGray)'};
   border-radius: var(--rounded-xs);
   padding: 12px 16px;
   outline: none;

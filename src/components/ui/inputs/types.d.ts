@@ -5,6 +5,8 @@ export type InputTextTypes = {
   name: string;
   placeholder: string;
   error: FieldError | undefined;
+  dirty: boolean;
   onChange: ChangeHandler;
   onBlur: ChangeHandler;
+  setValue: (e) => void;
 };
