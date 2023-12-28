@@ -8,13 +8,26 @@ import {
   StyledHeroImageWrapper,
   StyledPostsContainer,
 } from './components/landingPage.styles';
-import HeroImage from '/src/assets/images/hero.png';
+import HeroImage from 'src/assets/images/hero.png';
 import { CategoryList } from '@/categories';
 import { BlogList } from '@/posts';
+import { useEffect } from 'react';
+import useCategoryStore from 'src/store/category';
+import { getCategories } from 'src/services';
 
 const LandingPage = () => {
-  const categories: CategoryTypes[] = [];
+  const categoryStore = useCategoryStore();
+  const categories: CategoryTypes[] = categoryStore.categories;
   const blogs: BlogTypes[] = [];
+
+  useEffect(() => {
+    getCategories()
+      .then((response) => {
+        const categories = response.data.data;
+        categoryStore.setCategories(categories);
+      })
+      .catch((error) => console.log(error));
+  }, [categoryStore]);
 
   return (
     <Container>
