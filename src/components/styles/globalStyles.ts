@@ -7,6 +7,7 @@ const GlobalStyles = createGlobalStyle`${css`
     --clr-black: #1a1a1f;
     --clr-green: #14d81c;
     --clr-red: #ea1919;
+    --clr-dullRed: rgba(250, 242, 243, 1);
     --clr-overlay: #e4e3eb;
     --clr-primary-violet: #5d37f3;
     --clr-secondary-violet: #512be7;
