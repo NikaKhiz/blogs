@@ -1,10 +1,19 @@
 import { StyledModal } from '@/styles';
 import { ModalTypes } from './types';
 import React, { useEffect, useRef } from 'react';
+import ButtonSecondary from '@/ui/buttons/ButtonSecondary';
+import { HiOutlineXMark } from 'react-icons/hi2';
 
 const TheModal = (props: ModalTypes) => {
   const { opened, children, onClose } = props;
   const modal = useRef<HTMLDialogElement>(null);
+  const openModal = () => {
+    modal.current?.showModal();
+  };
+  const closeModal = () => {
+    modal.current?.close();
+  };
+
   const onOutsideClick = (e: React.MouseEvent) => {
     const dialogDimensions = modal.current?.getBoundingClientRect();
     if (
@@ -14,20 +23,28 @@ const TheModal = (props: ModalTypes) => {
         e.clientY < dialogDimensions.top ||
         e.clientY > dialogDimensions.bottom)
     ) {
-      modal.current?.close();
+      closeModal();
     }
   };
   useEffect(() => {
     if (opened) {
-      modal.current?.showModal();
+      openModal();
     } else {
-      modal.current?.close();
+      closeModal();
       onClose();
     }
-  }, [opened]);
+  }, [opened, onClose]);
 
   return (
     <StyledModal ref={modal} onClick={(e) => onOutsideClick(e)}>
+      <ButtonSecondary
+        top='20px'
+        right='20px'
+        background='transparent'
+        onClick={() => closeModal()}
+      >
+        <HiOutlineXMark />
+      </ButtonSecondary>
       {children}
     </StyledModal>
   );

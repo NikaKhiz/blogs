@@ -49,7 +49,12 @@ const BlogPage = () => {
     return (
       <Container>
         <StyledBlogSection>
-          <ButtonSecondary onClick={goBack}>
+          <ButtonSecondary
+            background='var(--clr-white)'
+            top={0}
+            left={0}
+            onClick={goBack}
+          >
             <FaChevronLeft />
           </ButtonSecondary>
           <p>Oops. No blog with current id. go back to the main page!</p>
@@ -60,7 +65,12 @@ const BlogPage = () => {
   return (
     <Container>
       <StyledBlogSection>
-        <ButtonSecondary onClick={goBack}>
+        <ButtonSecondary
+          top='0'
+          left='0'
+          background='var(--clr-white)'
+          onClick={goBack}
+        >
           <FaChevronLeft />
         </ButtonSecondary>{' '}
         <StyledBlogContent>
