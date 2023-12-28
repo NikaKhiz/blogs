@@ -3,6 +3,7 @@ import { Logo } from '@/icons';
 import ButtonPrimary from '@/ui/buttons/ButtonPrimary';
 import { useState } from 'react';
 import { TheModal } from '@/modal';
+import { FormLogin } from '@/form/login';
 
 const Header = () => {
   const [isAuthorized, setIsAuthorized] = useState<boolean>(false);
@@ -27,9 +28,7 @@ const Header = () => {
         </div>
       </StyledHeader>
       <TheModal opened={isModalOpen} onClose={toggleLoginModal}>
-        <div>
-          <p>modal content</p>
-        </div>
+        <FormLogin />
       </TheModal>
     </>
   );
