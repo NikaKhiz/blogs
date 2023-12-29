@@ -8,8 +8,15 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import useUserStore from 'src/store/user';
 import { ChangeEvent } from 'react';
 import { UserTypes } from 'src/types/user';
+import { logIn } from 'src/services';
+import useAuthStore from 'src/store/auth';
+import useModalStore from 'src/store/modal';
+
 const FormLogin = () => {
   const userStore = useUserStore();
+  const authStore = useAuthStore();
+  const closeModal = useModalStore((state) => state.closeModalLogin);
+
   const {
     register,
     formState: { errors, isDirty },
@@ -23,14 +30,31 @@ const FormLogin = () => {
     },
     resolver: yupResolver(loginFormValidationSchema()),
   });
+
   const setEmailValue = (e: ChangeEvent<HTMLInputElement>) => {
     userStore.setUserEmail({ email: e.target.value });
   };
 
   const onSubmit = (values: UserTypes) => {
-    console.log('submitted', values);
-    userStore.setUserEmail({ email: '' });
-    setValue('email', '');
+    logIn(values)
+      .then(() => {
+        userStore.setUserEmail({ email: '' });
+        authStore.setAuthStatus(true);
+        setValue('email', '');
+        closeModal();
+      })
+      .catch((error) => {
+        if (error.response.status === 422) {
+          const errorMessage = error.response.data.errors.email;
+          errors &&
+            setError('email', {
+              type: 'message',
+              message: errorMessage,
+            });
+        } else {
+          console.log(error);
+        }
+      });
   };
 
   return (

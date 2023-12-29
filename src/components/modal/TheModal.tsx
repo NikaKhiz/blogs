@@ -1,6 +1,6 @@
 import { StyledModal } from '@/styles';
 import { ModalTypes } from './types';
-import React, { useEffect, useRef } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 import ButtonSecondary from '@/ui/buttons/ButtonSecondary';
 import { HiOutlineXMark } from 'react-icons/hi2';
 
@@ -10,9 +10,11 @@ const TheModal = (props: ModalTypes) => {
   const openModal = () => {
     modal.current?.showModal();
   };
-  const closeModal = () => {
+
+  const closeModal = useCallback(() => {
     modal.current?.close();
-  };
+    onClose();
+  }, [onClose]);
 
   const onOutsideClick = (e: React.MouseEvent) => {
     const dialogDimensions = modal.current?.getBoundingClientRect();
@@ -26,14 +28,14 @@ const TheModal = (props: ModalTypes) => {
       closeModal();
     }
   };
+
   useEffect(() => {
     if (opened) {
       openModal();
     } else {
       closeModal();
-      onClose();
     }
-  }, [opened, onClose]);
+  }, [opened, closeModal]);
 
   return (
     <StyledModal ref={modal} onClick={(e) => onOutsideClick(e)}>

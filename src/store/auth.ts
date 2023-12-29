@@ -6,8 +6,11 @@ type Store = {
   setAuthStatus: (payload: AuthType) => void;
 };
 const useAuthStore = create<Store>((set) => ({
-  isAuthorized: false,
-  setAuthStatus: (payload: AuthType) => set(() => ({ isAuthorized: payload })),
+  isAuthorized: Boolean(localStorage.getItem('authorized')) || false,
+  setAuthStatus: (payload: AuthType) => {
+    localStorage.setItem('authorized', JSON.stringify(true));
+    set(() => ({ isAuthorized: payload }));
+  },
 }));
 
 export default useAuthStore;
