@@ -8,11 +8,13 @@ import {
 } from './components/blogPage.styles';
 import { FaChevronLeft } from 'react-icons/fa';
 import { FormAddBlog } from '@/form/addBlog';
+import { useNavigate } from 'react-router-dom';
 
-const goBack = () => {
-  console.log('go back');
-};
 const AddBlogPage = () => {
+  const navigate = useNavigate();
+  const goBack = () => {
+    navigate(-1);
+  };
   return (
     <Container>
       <StyledBlogSection>

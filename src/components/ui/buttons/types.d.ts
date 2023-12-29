@@ -2,6 +2,10 @@ export type ButtonPrimaryTypes = {
   title: string;
   onClick?: () => void;
 };
+export type ButtonSubmitTypes = {
+  title: string;
+  available: boolean;
+};
 
 export type ButtonSecondaryTypes = {
   children: React.ReactNode;

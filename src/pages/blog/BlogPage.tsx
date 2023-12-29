@@ -18,11 +18,12 @@ import { BlogTypes } from 'src/types/blogs';
 import BlogsCarousel from './components/BlogsCarousel';
 import ButtonSecondary from '@/ui/buttons/ButtonSecondary';
 import { FaChevronLeft } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
 type BlogTypeWithNewMember = BlogTypes & { email: string };
-
 const BlogPage = () => {
   const [blog, setBlog] = useState<BlogTypeWithNewMember | null>(null);
+  const navigate = useNavigate();
   useEffect(() => {
     setBlog({
       author: 'author',
@@ -43,7 +44,7 @@ const BlogPage = () => {
     });
   }, []);
   const goBack = () => {
-    console.log('go back');
+    navigate('/');
   };
   if (!blog)
     return (
