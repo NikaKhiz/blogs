@@ -12,8 +12,11 @@ export const StyledButtonPrimary = styled.button`
 `;
 
 export const StyledButtonSecondary = styled.button<{
-  background: string;
+  background?: string;
   bghover?: string;
+  top?: string;
+  left?: string;
+  right?: string;
 }>`
   width: 40px;
   height: 40px;
@@ -23,8 +26,9 @@ export const StyledButtonSecondary = styled.button<{
   cursor: pointer;
   border-radius: var(--rounded-medium);
   position: absolute;
-  top: 0;
-  left: 0;
+  top: ${(props) => props.top};
+  left: ${(props) => props.left};
+  right: ${(props) => props.right};
   &:hover {
     background-color: ${(props) => props.bghover};
   }

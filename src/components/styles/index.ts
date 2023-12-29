@@ -4,3 +4,4 @@ export * from './ui';
 export * from './categories';
 export * from './blogs';
 export * from './modal';
+export * from './form';

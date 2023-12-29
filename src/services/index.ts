@@ -1,2 +1,2 @@
 export * from './axios';
-export { getCategories } from './api';
+export { getCategories, logIn } from './api';

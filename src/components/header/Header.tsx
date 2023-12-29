@@ -1,16 +1,18 @@
 import { StyledHeader } from '@/styles';
 import { Logo } from '@/icons';
 import ButtonPrimary from '@/ui/buttons/ButtonPrimary';
-import { useState } from 'react';
 import { TheModal } from '@/modal';
+import { FormLogin } from '@/form/login';
+import useModalStore from 'src/store/modal';
+import useAuthStore from 'src/store/auth';
 
 const Header = () => {
-  const [isAuthorized, setIsAuthorized] = useState<boolean>(false);
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const isModalOpen = useModalStore((state) => state.modalLogin);
+  const isAuthorized = useAuthStore((state) => state.isAuthorized);
 
-  const toggleLoginModal = () => {
-    setIsModalOpen((prevState) => !prevState);
-  };
+  const openModalLogin = useModalStore((state) => state.openModalLogin);
+  const closeModalLogin = useModalStore((state) => state.closeModalLogin);
+
   const redirectToAddBlog = () => {
     console.log('redirect to add blog page');
   };
@@ -22,14 +24,12 @@ const Header = () => {
           {isAuthorized ? (
             <ButtonPrimary title='დაამატე ბლოგი' onClick={redirectToAddBlog} />
           ) : (
-            <ButtonPrimary title='შესვლა' onClick={toggleLoginModal} />
+            <ButtonPrimary title='შესვლა' onClick={openModalLogin} />
           )}
         </div>
       </StyledHeader>
-      <TheModal opened={isModalOpen} onClose={toggleLoginModal}>
-        <div>
-          <p>modal content</p>
-        </div>
+      <TheModal opened={isModalOpen} onClose={closeModalLogin}>
+        <FormLogin />
       </TheModal>
     </>
   );

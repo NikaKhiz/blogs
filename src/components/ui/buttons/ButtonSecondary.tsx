@@ -5,7 +5,11 @@ const ButtonSecondary = (props: ButtonSecondaryTypes) => {
   return (
     <StyledButtonSecondary
       onClick={props.onClick}
-      background={'var(--clr-white)'}
+      background={props.background}
+      bghover={props.bghover}
+      top={props.top}
+      left={props.left}
+      right={props.right}
     >
       {props.children}
     </StyledButtonSecondary>
