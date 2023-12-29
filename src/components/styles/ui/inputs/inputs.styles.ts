@@ -41,3 +41,26 @@ export const StyledInputErrorMessage = styled.span`
   font-size: var(--text-xs);
   color: var(--clr-red);
 `;
+
+export const StyledTextArea = styled.textarea<InputTextTypes>`
+  color: var(--clr-black);
+  font-size: var(--text-sm);
+  background-color: ${(props) =>
+    props.error ? '--clr-dullRed' : 'transparent'};
+  border: 1px solid
+    ${(props) =>
+      props.error
+        ? 'var(--clr-red)'
+        : props.dirty && !props.error
+          ? 'var(--clr-green)'
+          : 'var(--clr-primary-neutralGray)'};
+  border-radius: var(--rounded-xs);
+  padding: 12px 16px;
+  outline: none;
+  &::placeholder {
+    color: var(--clr-secondary-darkGray);
+  }
+  &:focus {
+    border: 1px solid var(--clr-primary-violet);
+  }
+`;
