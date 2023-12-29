@@ -50,9 +50,9 @@ const BlogPage = () => {
       <Container>
         <StyledBlogSection>
           <ButtonSecondary
-            background='var(--clr-white)'
-            top={0}
-            left={0}
+            background='var(--clr-primary-darkGray)'
+            top='0'
+            left='0'
             onClick={goBack}
           >
             <FaChevronLeft />

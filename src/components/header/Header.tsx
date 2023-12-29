@@ -5,26 +5,32 @@ import { TheModal } from '@/modal';
 import { FormLogin } from '@/form/login';
 import useModalStore from 'src/store/modal';
 import useAuthStore from 'src/store/auth';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Header = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const isModalOpen = useModalStore((state) => state.modalLogin);
   const isAuthorized = useAuthStore((state) => state.isAuthorized);
+  const standartHeader = location.pathname !== '/add-blog';
 
   const openModalLogin = useModalStore((state) => state.openModalLogin);
   const closeModalLogin = useModalStore((state) => state.closeModalLogin);
-
   const redirectToAddBlog = () => {
     navigate('/add-blog');
   };
   return (
     <>
-      <StyledHeader isStandart>
+      <StyledHeader isStandart={standartHeader}>
         <Logo />
         <div>
           {isAuthorized ? (
-            <ButtonPrimary title='დაამატე ბლოგი' onClick={redirectToAddBlog} />
+            standartHeader && (
+              <ButtonPrimary
+                title='დაამატე ბლოგი'
+                onClick={redirectToAddBlog}
+              />
+            )
           ) : (
             <ButtonPrimary title='შესვლა' onClick={openModalLogin} />
           )}

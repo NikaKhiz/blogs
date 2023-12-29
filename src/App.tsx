@@ -1,7 +1,7 @@
 import { Header } from '@/header';
 import { GlobalStyles } from '@/styles';
 import { Routes, Route } from 'react-router-dom';
-import { LandingPage, BlogPage } from './pages';
+import { LandingPage, BlogPage, AddBlogPage } from './pages';
 
 function App() {
   return (
@@ -10,6 +10,7 @@ function App() {
       <Header />
       <Routes>
         <Route path='/' element={<LandingPage />} />
+        <Route path='/add-blog' element={<AddBlogPage />} />
         <Route path='/blog/:id' element={<BlogPage />} />
       </Routes>
     </>
