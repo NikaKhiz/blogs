@@ -5,8 +5,10 @@ import { TheModal } from '@/modal';
 import { FormLogin } from '@/form/login';
 import useModalStore from 'src/store/modal';
 import useAuthStore from 'src/store/auth';
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
+  const navigate = useNavigate();
   const isModalOpen = useModalStore((state) => state.modalLogin);
   const isAuthorized = useAuthStore((state) => state.isAuthorized);
 
@@ -14,7 +16,7 @@ const Header = () => {
   const closeModalLogin = useModalStore((state) => state.closeModalLogin);
 
   const redirectToAddBlog = () => {
-    console.log('redirect to add blog page');
+    navigate('/add-blog');
   };
   return (
     <>
