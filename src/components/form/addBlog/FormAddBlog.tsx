@@ -12,8 +12,6 @@ const FormAddBlog = () => {
     register,
     formState: { errors, dirtyFields, isValid },
     handleSubmit,
-    setError,
-    setValue,
   } = useForm({
     mode: 'all',
     defaultValues: {
@@ -32,7 +30,6 @@ const FormAddBlog = () => {
 
   const setAuthorValue = (e: ChangeEvent<HTMLInputElement>) => {
     console.log(e.target.value);
-    // userStordescriptione.setBlogAuthor({ email: e.target.value });
   };
   return (
     <TheForm onSubmit={handleSubmit(onSubmit)}>
