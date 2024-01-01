@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { SelectPropsType } from '../types';
 
 export const Container = styled.main`
   width: 100%;
@@ -53,4 +54,102 @@ export const StyledFormButton = styled.button<{ available: boolean }>`
     background-color: ${(props) =>
       props.available ? 'var(--clr-secondary-violet)' : ''};
   }
+`;
+
+export const StyledInputSelectContainer = styled.div`
+  position: relative;
+`;
+export const StyledInputSelectWrapper = styled.div<SelectPropsType>`
+  color: var(--clr-secondary-darkGray);
+  font-size: var(--text-sm);
+  padding: ${(props) => (props.selected ? '6px 16px 6px 6px' : '12px 16px')};
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  background-color: ${(props) =>
+    props.error ? '--clr-dullRed' : 'transparent'};
+  border: 1px solid
+    ${(props) =>
+      props.error
+        ? 'var(--clr-red)'
+        : props.dirty && !props.error
+          ? 'var(--clr-green)'
+          : 'var(--clr-primary-neutralGray)'};
+  border-radius: var(--rounded-xs);
+  &::placeholder {
+    color: var(--clr-secondary-darkGray);
+  }
+  &:focus {
+    border: 1px solid var(--clr-primary-violet);
+  }
+`;
+
+export const StyledInputSelectSelectedList = styled.ul`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 290px;
+  overflow-x: scroll;
+  list-style-type: none;
+  & {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  &::-webkit-scrollbar {
+    display: none;
+  }
+`;
+export const StyledInputSelectSelectedListItem = styled.li<{
+  textColor: string;
+  backgroundColor: string;
+}>`
+  font-size: var(--text-xs);
+  border-radius: var(--rounded-large);
+  padding: 8px 12px;
+  min-width: max-content;
+  color: ${(props) => props.textColor};
+  background-color: ${(props) => props.backgroundColor};
+  display: flex;
+  align-items: center;
+  gap: 8px;
+`;
+
+export const StyledInputSelectMenu = styled.ul`
+  position: absolute;
+  top: 110%;
+  left: 0;
+  z-index: 10;
+  max-height: 150px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  overflow-y: auto;
+  gap: 8px;
+  padding: 16px 25px 16px 16px;
+  box-shadow: 2px 4px 8px 0px #00000014;
+  border: 1px solid var(--clr-secondary-neutralGray);
+  border-radius: var(--rounded-sm);
+  background-color: var(--clr-white);
+  list-style-type: none;
+
+  & {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  &::-webkit-scrollbar {
+    display: none;
+  }
+`;
+export const StyledInputSelectMenuItem = styled.li<{
+  textColor: string;
+  backgroundColor: string;
+}>`
+  font-size: var(--text-xs);
+  padding: 8px 12px;
+  color: ${(props) => props.textColor};
+  background-color: ${(props) => props.backgroundColor};
+  border-radius: var(--rounded-medium);
+  cursor: pointer;
 `;

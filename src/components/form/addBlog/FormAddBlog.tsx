@@ -1,12 +1,14 @@
-import { InputText } from '@/ui/inputs';
+import { InputText, InputTextarea, InputDate } from '@/ui/inputs';
 import { TheForm } from '..';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { addBlogFormValidationSchema } from 'src/schemas';
 import { ChangeEvent } from 'react';
 import { StyledBlogFormFieldsWrapper } from 'src/pages/addBlog/components/blogPage.styles';
-import InputTextarea from '@/ui/inputs/inputTextarea';
 import ButtonSubmit from './ButtonSubmit';
+import useCategoryStore from 'src/store/category';
+import InputSelect from 'src/pages/addBlog/components/InputSelect';
+
 const FormAddBlog = () => {
   const {
     register,
@@ -18,7 +20,7 @@ const FormAddBlog = () => {
       author: '',
       title: '',
       description: '',
-      published_at: '',
+      published_at: new Date(),
       categories: '',
       email: '',
     },
@@ -31,6 +33,9 @@ const FormAddBlog = () => {
   const setAuthorValue = (e: ChangeEvent<HTMLInputElement>) => {
     console.log(e.target.value);
   };
+
+  const categoryStore = useCategoryStore();
+
   return (
     <TheForm onSubmit={handleSubmit(onSubmit)}>
       <StyledBlogFormFieldsWrapper>
@@ -60,19 +65,19 @@ const FormAddBlog = () => {
         dirty={dirtyFields.description}
       />
       <StyledBlogFormFieldsWrapper>
-        <InputText
-          placeholder='12/12/2023'
+        <InputDate
           label='გამოქვეყნების თარიღი*'
-          {...register('published_at')}
+          {...register('published_at', { valueAsDate: true })}
           setValue={setAuthorValue}
           error={errors['published_at']}
           dirty={dirtyFields['published_at']}
         />
 
-        <InputText
+        <InputSelect
           placeholder='აირჩიეთ კატეგორია'
           label='კატეგორია *'
           {...register('categories')}
+          options={categoryStore.categories}
           setValue={setAuthorValue}
           error={errors.categories}
           dirty={dirtyFields.categories}

@@ -1,5 +1,5 @@
 import { IconError } from '@/icons';
-import { InputTextTypes } from './types';
+import { InputTypes } from './types';
 import {
   StyledInputError,
   StyledInputErrorMessage,
@@ -8,7 +8,7 @@ import {
 } from '@/styles';
 import { forwardRef } from 'react';
 
-const InputTextarea = forwardRef<HTMLTextAreaElement, InputTextTypes>(
+const InputTextarea = forwardRef<HTMLTextAreaElement, InputTypes>(
   (
     { name, placeholder, label, error, dirty, onChange, onBlur, setValue },
     ref,
@@ -28,6 +28,8 @@ const InputTextarea = forwardRef<HTMLTextAreaElement, InputTextTypes>(
           onBlur={onBlur}
           ref={ref}
           dirty={dirty}
+          rows={10}
+          cols={30}
         />
         {error && (
           <StyledInputError>

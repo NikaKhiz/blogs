@@ -1,6 +1,6 @@
 import { FieldError } from 'react-hook-form';
 
-export type InputTextTypes = {
+export type InputPropsType = {
   error: FieldError | undefined;
   dirty: boolean | undefined;
 };
