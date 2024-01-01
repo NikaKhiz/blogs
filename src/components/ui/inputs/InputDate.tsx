@@ -1,27 +1,23 @@
-import { IconError } from '@/icons';
-import { InputTypes } from './types';
 import {
+  StyledInputDate,
   StyledInputError,
   StyledInputErrorMessage,
-  StyledInputText,
   StyledInputWrapper,
 } from '@/styles';
 import { forwardRef } from 'react';
+import { InputTypes } from './types';
+import { IconError } from '@/icons';
 
-const InputText = forwardRef<HTMLInputElement, InputTypes>(
-  (
-    { name, placeholder, label, error, dirty, onChange, onBlur, setValue },
-    ref,
-  ) => {
+const InputDate = forwardRef<HTMLInputElement, InputTypes>(
+  ({ name, label, error, dirty, onChange, onBlur, setValue }, ref) => {
     return (
       <StyledInputWrapper>
         <label htmlFor={name}>{label}</label>
-        <StyledInputText
+        <StyledInputDate
           error={error}
-          type='text'
           id={name}
           name={name}
-          placeholder={placeholder}
+          type='date'
           onChange={(e) => {
             onChange(e);
             setValue(e);
@@ -40,4 +36,5 @@ const InputText = forwardRef<HTMLInputElement, InputTypes>(
     );
   },
 );
-export default InputText;
+
+export default InputDate;
